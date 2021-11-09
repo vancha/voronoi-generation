@@ -54,10 +54,14 @@ impl Point {
     //it a random color
     fn new() -> Self {
         let mut random_numer_generator = rand::thread_rng();
+        let grayscalevalue = random_numer_generator.gen_range(0..254) as u8;
         let color = image::Rgb([
-            random_numer_generator.gen_range(0..254) as u8,
-            random_numer_generator.gen_range(0..254) as u8,
-            random_numer_generator.gen_range(0..254) as u8,
+            grayscalevalue,
+            grayscalevalue,
+            grayscalevalue,
+            //random_numer_generator.gen_range(0..254) as u8,
+            //random_numer_generator.gen_range(0..254) as u8,
+            //random_numer_generator.gen_range(0..254) as u8,
         ]);
         let x: i32 = random_numer_generator.gen_range(0..(WIDTH - 1));
         let y: i32 = random_numer_generator.gen_range(0..(HEIGHT - 1));
@@ -110,5 +114,5 @@ fn main() {
         *pixel = color;
     }
     //done, save the buffer to a file and be done with it, voronoi thingy created. yay!
-    img_buffer.save("fractal.png").unwrap();
+    img_buffer.save("voronoi.png").unwrap();
 }
